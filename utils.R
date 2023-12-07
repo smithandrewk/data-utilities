@@ -12,3 +12,13 @@ data_cleaning_procedure <- function(linelist){
   tmp <- na.omit(tmp)
   return(tmp)
 }
+simplified_data_cleaning_prodcedure <- function(linelist){
+  # data_cleaning_procedure is defined for linelists from DHEC
+  # written by Joe SMith
+  # 8Dec2023
+  # parameters: linelist with columns "case_id","date_hospitalisation","gender","age","hospital"
+  tmp <- mutate(tmp,hospital = str_replace_all(hospital, " ",""))
+  tmp <- mutate(tmp, hospital = tolower(hospital))
+  tmp <- na.omit(tmp)
+  return(tmp)
+}
